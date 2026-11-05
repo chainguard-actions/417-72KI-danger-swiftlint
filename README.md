@@ -1,14 +1,47 @@
-# 417-72KI/danger-swiftlint
+# [![Docker Hub](https://dockeri.co/image/41772ki/danger-swiftlint)](https://hub.docker.com/r/41772ki/danger-swiftlint)
 
-Runs Danger-Swift with SwiftLint
+Docker image for [Danger-Swift](https://github.com/danger/swift) using [SwiftLint](https://github.com/realm/SwiftLint)
 
-Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at [https://github.com/417-72KI/danger-swiftlint](https://github.com/417-72KI/danger-swiftlint).
+# Usage Sample
 
-## Versions
+## Local Docker
 
-| Version | Tag | Upstream commit | Hardening report |
-|---------|-----|-----------------|------------------|
-| v6.3 | [`v6.3`](https://github.com/chainguard-actions/417-72KI-danger-swiftlint/tree/v6.3) | [`cede6b0`](https://github.com/417-72KI/danger-swiftlint/commit/cede6b054f0974088af775b7843437f4b14dc33e) | [`HARDENING.md`](https://github.com/chainguard-actions/417-72KI-danger-swiftlint/blob/v6.3/HARDENING.md) |
+```sh
+$ docker run -v `pwd`:`pwd` -w `pwd` 41772ki/danger-swiftlint local
+```
+
+## GitHub Actions
+
+```yml
+name: Danger
+on:
+  pull_request:
+    paths:
+      - '.swiftlint.yml'
+      - '**/*.swift'
+jobs:
+  Danger:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Danger
+        uses: 417-72KI/danger-swiftlint@v6.4 # Look at the `Note for version`
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+```
+
+### Note for version
+> [!IMPORTANT]
+> Docker images in `v6.0` and higher versions are updated for once a week.  
+> Since `v5.10` and below also can be used in GitHub Actions, but Docker images of them are no longer updated.
+
+| tag | Swift version |
+| --- | ------------- |
+| `v5.5+` | Same as the tag |
+| `v4`    | 5.4 |
+| `v3`    | 5.3 |
+| `v2`    | 5.2 |
+| `v1`    | 5.1 |
 
 ## Privacy
 

@@ -1,0 +1,13 @@
+name: 'GitHub Action for Danger-Swift + SwiftLint'
+description: 'Runs Danger-Swift with SwiftLint'
+author: '417-72KI <417.72ki@gmail.com>'
+inputs:
+  dangerfile:
+    description: 'Path of Dangerfile.swift, if it is not in repo''s root.'
+    required: false
+runs:
+  using: 'docker'
+  image: 'docker://41772ki/danger-swiftlint:6.4@sha256:c23bb7c31f726d4d3795bdcdb952e922d460fb3097bc5f7b38854e00f3e7c9c9'
+branding:
+  icon: 'alert-circle'
+  color: 'purple'
